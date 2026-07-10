@@ -9,7 +9,12 @@
 <meta property="og:title" content="人生の残り回数カレンダー">
 <meta property="og:description" content="桜を見られる回数。親と会える回数。人生を「あと何回」で眺める、静かなWebツール。">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://katsuya0403.github.io/-nokori-kaisu/">
+<meta property="og:image" content="https://katsuya0403.github.io/-nokori-kaisu/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://katsuya0403.github.io/-nokori-kaisu/og-image.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="残り回数">
@@ -925,6 +930,9 @@ async function openShare(o){
   ctx.fillStyle='rgba(60,58,54,.40)';
   ctx.font='400 27px YSerif, "Hiragino Mincho ProN", serif';
   ctx.fillText('人生の残り回数カレンダー', W/2, 1264);
+  ctx.fillStyle='rgba(60,58,54,.30)';
+  ctx.font='400 22px YSerif, "Hiragino Mincho ProN", serif';
+  ctx.fillText('katsuya0403.github.io/-nokori-kaisu/', W/2, 1300);
 
   const url = cv.toDataURL('image/png');
   document.getElementById('shareImg').src = url;
