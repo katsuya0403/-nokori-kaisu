@@ -33,9 +33,9 @@
 }
 :root{
   --paper:#FAF8F3;
-  --ink:#3C3A36;
-  --ink2:rgba(60,58,54,.76);
-  --ink3:rgba(60,58,54,.56);
+  --ink:#252320;
+  --ink2:rgba(37,35,32,.88);
+  --ink3:rgba(37,35,32,.74);
   --line:#E5DFD1;
   --card:#FFFFFF;
 }
@@ -106,11 +106,11 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield;}
   background:var(--card);border:1px solid var(--line);border-radius:10px;
   padding:30px 24px 18px;margin-bottom:16px;text-align:center;position:relative;
 }
-.card-label{font-size:14px;color:var(--ink2);letter-spacing:.16em;}
+.card-label{font-size:14px;color:var(--ink);letter-spacing:.16em;}
 .card-num{margin:14px 0 4px;line-height:1.1;}
 .card-num .n{
-  font-family:'YNum','YSerif','Hiragino Mincho ProN','Yu Mincho',serif;
-  font-weight:275;font-size:72px;letter-spacing:.02em;
+  font-family:'YSerif','Hiragino Mincho ProN','Yu Mincho',serif;
+  font-weight:400;font-size:72px;letter-spacing:.02em;
 }
 .card-num .n.mid{font-size:56px;}
 .card-num .n.small{font-size:40px;}
@@ -123,7 +123,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield;}
   cursor:pointer;letter-spacing:.14em;padding:4px 6px;
 }
 .tlink:active{color:var(--ink);}
-.sample .card,.sample .prose,.sample .gift{opacity:.42;}
+.sample .card,.sample .prose,.sample .gift{opacity:.92;}
 .sample-note{font-size:12.5px;color:var(--ink2);text-align:center;margin:2px 0 14px;letter-spacing:.08em;}
 .sample-note button{
   font-family:inherit;font-size:12.5px;color:var(--ink);background:none;border:none;
@@ -143,7 +143,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield;}
 
 /* ---------- gift ---------- */
 .gift{padding:8px 6px 4px;}
-.gift-disclosure{font-size:11px;color:var(--ink3);letter-spacing:.1em;margin-bottom:22px;}
+.gift p.gift-disclosure{font-size:11px;color:var(--ink3);letter-spacing:.08em;margin-bottom:28px;}
 .gift p{font-size:15.5px;line-height:2.5;letter-spacing:.1em;color:var(--ink);margin-bottom:24px;}
 .gift-links{list-style:none;margin:0 0 26px;}
 .gift-links li{margin-bottom:16px;}
@@ -315,7 +315,7 @@ footer p{font-size:11px;color:var(--ink3);line-height:2;letter-spacing:.06em;}
       <section class="cards" id="cards"></section>
       <section class="prose" id="prose"></section>
       <section class="gift fx" id="gift">
-        <p class="gift-disclosure">※ここから先は、プロモーションを含みます</p>
+        <p class="gift-disclosure">※ここから先は、広告を含みます</p>
         <p>数字は、見ているだけでも、少しずつ減っていく。<br>次の一回を、ほんの少し特別にするものを、置いておきます。</p>
         <ul class="gift-links">
           <li><a href="https://hb.afl.rakuten.co.jp/hgc/55ab27b6.ff1a8d23.55ab27b7.a40ddbf3/?pc=http%3A%2F%2Fwww.rakuten.co.jp%2Fhibiyakadan%2F&link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MjMyMjQ4MSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener">花を、眺めてみる</a></li>
@@ -870,7 +870,7 @@ document.getElementById('c-add').addEventListener('click',()=>{
 async function openShare(o){
   try{
     await Promise.all([
-      document.fonts.load('275 300px YNum'),
+      document.fonts.load('400 300px YSerif'),
       document.fonts.load('400 46px YSerif')
     ]);
   }catch(e){}
@@ -892,10 +892,10 @@ async function openShare(o){
   // 数字＋単位
   const numStr = fmt(o.count);
   let numSize = 300;
-  ctx.font='275 '+numSize+'px YNum, YSerif, serif';
+  ctx.font='400 '+numSize+'px YSerif, "Hiragino Mincho ProN", serif';
   while(ctx.measureText(numStr).width > 760 && numSize>90){
     numSize -= 20;
-    ctx.font='275 '+numSize+'px YNum, YSerif, serif';
+    ctx.font='400 '+numSize+'px YSerif, "Hiragino Mincho ProN", serif';
   }
   const numW = ctx.measureText(numStr).width;
   const unitStr = o.unitChar||'回';
@@ -907,7 +907,7 @@ async function openShare(o){
   const baseY = 780;
   ctx.textAlign='left';
   ctx.fillStyle=INK;
-  ctx.font='275 '+numSize+'px YNum, YSerif, serif';
+  ctx.font='400 '+numSize+'px YSerif, "Hiragino Mincho ProN", serif';
   ctx.fillText(numStr, (W-total)/2, baseY);
   ctx.font='400 '+unitSize+'px YSerif, "Hiragino Mincho ProN", serif';
   ctx.fillText(unitStr, (W-total)/2+numW+gap, baseY);
