@@ -141,6 +141,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield;}
 .prose p{font-size:15.5px;line-height:2.5;letter-spacing:.1em;margin-bottom:34px;color:var(--ink);}
 .prose .num{font-size:19px;letter-spacing:.04em;}
 .nw{white-space:nowrap;}
+.nb{display:inline-block;}
 .prose .coda{color:var(--ink);margin-bottom:0;}
 
 /* ---------- gift ---------- */
@@ -318,7 +319,7 @@ footer p{font-size:11px;color:var(--ink3);line-height:2;letter-spacing:.06em;}
       <section class="prose" id="prose"></section>
       <section class="gift fx" id="gift">
         <p class="gift-disclosure">※ここから先は、広告を含みます</p>
-        <p>数字は、見ているだけでも、少しずつ減っていく。<br>次の一回を、ほんの少し特別にするものを、置いておきます。</p>
+        <p><span class="nb">数字は、</span><span class="nb">見ているだけでも、</span><span class="nb">少しずつ減っていく。</span><br><span class="nb">次の一回を、</span><span class="nb">ほんの少し特別にするものを、</span><span class="nb">置いておきます。</span></p>
         <ul class="gift-links">
           <li><a href="https://hb.afl.rakuten.co.jp/hgc/55ab27b6.ff1a8d23.55ab27b7.a40ddbf3/?pc=http%3A%2F%2Fwww.rakuten.co.jp%2Fhibiyakadan%2F&link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MjMyMjQ4MSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener">花を、眺めてみる</a></li>
           <li><a href="https://hb.afl.rakuten.co.jp/hgc/55ab2b27.8a86e0ed.55ab27b7.a40ddbf3/?pc=http%3A%2F%2Fwww.rakuten.co.jp%2F1894ginza-sembikiya%2F&link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6NjY3MjM0LCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener">季節の果物を、選んでみる</a></li>
@@ -379,7 +380,7 @@ footer p{font-size:11px;color:var(--ink3);line-height:2;letter-spacing:.06em;}
           <span class="unit">歳</span>
         </div>
       </div>
-      <p class="hint">「子どもと同じ家で暮らせる年数」のような、自分だけの回数もここから作れます。<br>（相手の目安寿命の欄に「18」と入れれば、18歳までの回数になります）</p>
+      <p class="hint"><span class="nb">「子どもと同じ家で暮らせる年数」のような、</span><span class="nb">自分だけの回数もここから作れます。</span><br><span class="nb">（相手の目安寿命の欄に「18」と入れれば、</span><span class="nb">18歳までの回数になります）</span></p>
       <div class="submit">
         <button class="btn" id="c-add">この回数を数える</button>
       </div>
@@ -699,11 +700,11 @@ function renderProse(){
 
   const p1 = el('p','fx');
   const nw = (n,u)=>'<span class="nw">約<span class="num">'+fmt(n)+'</span>'+u+'</span>';
-  p1.innerHTML = 'あなたはこれまでに、<br>'+nw(sleepPast,'回')+'、眠りについてきました。<br>そしてこれから、<br>'+nw(sleepLeft,'回')+'、眠りにつくことになります。';
+  p1.innerHTML = 'あなたはこれまでに、<br><span class="nb">'+nw(sleepPast,'回')+'、</span><span class="nb">眠りについてきました。</span><br>そしてこれから、<br><span class="nb">'+nw(sleepLeft,'回')+'、</span><span class="nb">眠りにつくことになります。</span>';
   const p2 = el('p','fx');
-  p2.innerHTML = 'あなたはこれまでに、<br>'+nw(mealPast,'食')+'、食事をしてきました。<br>そしてこれから、<br>'+nw(mealLeft,'食')+'、食事をすることになります。';
+  p2.innerHTML = 'あなたはこれまでに、<br><span class="nb">'+nw(mealPast,'食')+'、</span><span class="nb">食事をしてきました。</span><br>そしてこれから、<br><span class="nb">'+nw(mealLeft,'食')+'、</span><span class="nb">食事をすることになります。</span>';
   const p3 = el('p','fx coda');
-  p3.innerHTML = '春も、夏も、秋も、冬も。<br>あなたはこれから、季節をあと'+nw(seasons,'回')+'、めぐることになります。';
+  p3.innerHTML = '春も、夏も、秋も、冬も。<br><span class="nb">あなたはこれから、</span><span class="nb">季節をあと'+nw(seasons,'回')+'、</span><span class="nb">めぐることになります。</span>';
   box.appendChild(p1); box.appendChild(p2); box.appendChild(p3);
 }
 
