@@ -55,7 +55,9 @@ header{padding:26px 0 0;text-align:center;}
 .site-title{font-size:12px;letter-spacing:.34em;color:var(--ink3);font-weight:400;}
 
 /* ---------- fade in ---------- */
-.fx{opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease;}
+.fx{opacity:0;transform:translateY(22px);transition:opacity 1.7s cubic-bezier(.22,.61,.36,1),transform 1.7s cubic-bezier(.22,.61,.36,1);}
+.prose p:nth-of-type(2){transition-delay:.15s;}
+.prose p:nth-of-type(3){transition-delay:.30s;}
 .fx.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){
   .fx{opacity:1;transform:none;transition:none;}
@@ -560,7 +562,7 @@ function fmt(n){ return n.toLocaleString('ja-JP'); }
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 function countUp(el, to){
   if(reduceMotion || to<=0){ el.textContent = fmt(to); return; }
-  const dur = 600, t0 = performance.now();
+  const dur = 1100, t0 = performance.now();
   let done = false;
   function step(t){
     if(done) return;
@@ -599,7 +601,7 @@ function makeCard(o){
     numWrap.appendChild(n); numWrap.appendChild(u);
     c.appendChild(numWrap);
     if(o.note) c.appendChild(el('div','card-note',o.note));
-    countUp(n, o.count);
+    if(reduceMotion){ n.textContent = fmt(o.count); } else { n.dataset.to = o.count; n.setAttribute('data-pending','1'); }
   }
   const acts = el('div','card-acts');
   if(o.msg==null){
@@ -1029,7 +1031,10 @@ function observeFx(){
   if(reduceMotion){ document.querySelectorAll('.fx').forEach(x=>x.classList.add('in')); return; }
   if(!io){
     io = new IntersectionObserver(es=>{
-      es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in');
+        const _n=e.target.querySelector&&e.target.querySelector('.card-num .n[data-pending]');
+        if(_n){ _n.removeAttribute('data-pending'); countUp(_n, Number(_n.dataset.to)); }
+        io.unobserve(e.target); } });
     },{threshold:.12});
   }
   document.querySelectorAll('.fx:not(.in)').forEach(x=>io.observe(x));
